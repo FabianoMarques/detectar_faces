@@ -1,10 +1,12 @@
 <?php
 $url = "detectarfaces-production.up.railway.app"; // Substitua pela URL real
 
+
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // Desative se houver problemas com SSL
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); // Permite seguir redirecionamentos
 
 $response = curl_exec($ch);
 $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
